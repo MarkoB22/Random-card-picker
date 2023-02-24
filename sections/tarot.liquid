@@ -1,0 +1,211 @@
+<link
+  rel="stylesheet"
+  href="{{ 'tarot.css' | asset_url }}"
+  media="print"
+  onload="this.media='all'">
+<noscript>{{ 'tarot.css' | asset_url | stylesheet_tag }}</noscript>
+
+{% assign colorGroup = "colorGroup--" | append: section.settings.colorGroup %}
+
+<tarot-cards
+  class="tarot-sectionWrapper {{ colorGroup }}">
+
+  {% if section.settings.title != blank %}
+    <div
+      class="tarot-title u-h1">
+      {% render 'icon_pack' with 'star', spacing: 'tarot-first_star' %}
+      {{ section.settings.title }}
+      {% render 'icon_pack' with 'star', spacing: 'tarot-second_star' %}
+    </div>
+  {% endif %}
+
+  <div
+    class="tarot-pickACardWrapper">
+    {% if section.settings.subtitle != blank %}
+      <div class="tarot-subtitle u-h4 mt-xl">
+        {%- comment -%}no need for class tarot-subtitle because we dont have css for it {%- endcomment -%}
+        {{ section.settings.subtitle }}
+      </div>
+    {% endif %}
+
+    {% if section.settings.text != blank %}
+      <div
+        class="tarot-text u-p4 mt-l">
+        {{ section.settings.text }}
+      </div>
+    {% endif %}
+    <div
+      class="tarot-starsCardsWrapper">
+      <div
+        class="tarot-starsOne">
+        {% render 'icon_pack' with 'stars' %}
+      </div>
+      <div
+        class="tarot-cardsWrapper"
+        data-action="pick-random-card">
+        {% render 'icon_pack' with 'tarot_card' %}
+        {% render 'icon_pack' with 'tarot_card' %}
+        {% render 'icon_pack' with 'tarot_card' %}
+        {% render 'icon_pack' with 'tarot_card' %}
+        {% render 'icon_pack' with 'tarot_card' %}
+        {% render 'icon_pack' with 'tarot_card' %}
+        {% render 'icon_pack' with 'tarot_card' %}
+      </div>
+      <div
+        class="tarot-starsTwo">
+        {% render 'icon_pack' with 'stars' %}
+      </div>
+    </div>
+  </div>
+
+  {% for block in section.blocks %}
+    <div class="tarotDescription-cardWrapper tarot-hidden">
+      {%- comment -%}Naming convention tarot- {%- endcomment -%}
+
+      <div class="tarotDescription-imageWrapper">
+        {%- comment -%}Naming convention tarot- {%- endcomment -%}
+        {%- assign image_url = block.settings.card_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+        {%- assign image_temp = block.settings.card_image | image_url: width: 50 -%}
+        <img
+          class="tarotDescription-image lazyload"
+          {%- comment -%}
+          Naming
+          convention
+          tarot-
+          {%- endcomment -%}
+          src="{{ image_temp }}"
+          data-src="{{ image_url }}"
+          data-widths="[400, 600, 800, 1000, 1200, 1500, 1800]"
+          data-sizes="auto"
+          alt="{{ block.settings.card_image.alt | escape }}">
+
+        <a class="tarotDescription-pickAnother u-p6 mt-l"
+          data-action="pick-another-card">
+          {%- comment -%}Naming convention tarot- {%- endcomment -%}
+          {{ section.settings.pick_another }}
+        </a>
+      </div>
+
+      <div class="tarotDescription-cardDescription">
+        {%- comment -%}Naming convention tarot- {%- endcomment -%}
+
+        <div class="tarotDescription-cardTitle u-h2 mb-sxl">
+          {%- comment -%}Naming convention tarot- {%- endcomment -%}
+          {{ block.settings.card_heading }}
+        </div>
+
+        <div class="tarotDescription-cardText u-p4">
+          {%- comment -%}Naming convention tarot- {%- endcomment -%}
+          {{ block.settings.card_text }}
+        </div>
+
+      </div>
+    </div>
+  {% endfor %}
+
+  {% if section.settings.button_text != blank %}
+    {% render 'buttons'
+     , classes: "u-pb2",
+     link: section.settings.button_link,
+     text: section.settings.button_text,
+     button_state: "Secondary" %}
+  {% endif %}
+
+</tarot-cards>
+{% schema %}
+  {
+    "name": "Tarot",
+    "settings": [
+      {
+        "type": "select",
+        "id": "colorGroup",
+        "options": [
+          {
+            "value": "primary",
+            "label": "Primary"
+          },
+          {
+            "value": "secondary",
+            "label": "Secondary"
+          },
+          {
+            "value": "third",
+            "label": "Third"
+          },
+          {
+            "value": "fourth",
+            "label": "Fourth"
+          }, {
+            "value": "fifth",
+            "label": "Fifth"
+          }, {
+            "value": "sixth",
+            "label": "Sixth"
+          }
+        ],
+        "default": "secondary",
+        "label": "Color group"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Tarot Reading"
+      },
+      {
+        "type": "text",
+        "id": "subtitle",
+        "label": "Title",
+        "default": "Pick a card"
+      },
+      {
+        "type": "richtext",
+        "id": "text",
+        "label": "Subtitle",
+        "default": "<p>What does the future have in store for you? Now is time to discover the day's possibilities!r.</p>"
+      }, {
+        "type": "text",
+        "id": "button_text",
+        "label": "Button text",
+        "default": "Book reading at the store"
+      }, {
+        "type": "url",
+        "id": "button_link",
+        "label": "Button link"
+      }, {
+        "type": "text",
+        "id": "pick_another",
+        "label": "Pick another card text",
+        "default": "Pick another card"
+      }
+    ],
+    "blocks": [
+      {
+        "name": "Card description",
+        "type": "card",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "card_image",
+            "label": "Card image"
+          }, {
+            "type": "text",
+            "id": "card_heading",
+            "label": "Card heading",
+            "default": "text"
+          }, {
+            "type": "richtext",
+            "id": "card_text",
+            "label": "Card text",
+            "default": "<p>text</p>"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Tarot"
+      }
+    ]
+  }
+{% endschema %}

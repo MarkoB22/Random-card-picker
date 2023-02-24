@@ -1,0 +1,212 @@
+.tarot-sectionWrapper {
+    padding: 32px 16px;
+    background: var(--background_color);
+    color: var(--elements_color);
+    text-align: center;
+    display: block;
+    overflow: hidden;
+}
+
+.tarot-second_star {
+    display: none;
+}
+
+.tarot-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tarot-cardsWrapper {
+    display: inline-flex;
+    margin-top: 48px;
+    margin-left: -2.1334vw;
+    margin-right: -2.1334vw;
+    position: relative;
+    z-index: 1;
+}
+
+.tarot-starsCardsWrapper {
+    position: relative;
+}
+
+.tarot-sectionWrapper .Svg--tarot_card {
+    width: 50.9334vw;
+    height: 88.8vw;
+    border: 2.1334vw solid var(--elements_color);
+    border-radius: 8px;
+    background: var(--background_color);
+}
+
+.tarot-sectionWrapper .Svg--tarot_card:not(:first-child) {
+    margin-left: -43.4667vw;
+}
+
+.tarot-sectionWrapper .Button {
+    display: block;
+    margin-top: 56px;
+}
+
+.tarotDescription-cardWrapper {
+    margin-top: 32px;
+}
+
+.tarotDescription-image {
+    width: 70.6667vw;
+    margin: 0 auto;
+    display: block;
+}
+
+.tarotDescription-pickAnother {
+    color: var(--subdetails_color);
+    border-bottom: 1px solid var(--subdetails_color);
+    text-align: center;
+    display: block;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+}
+
+.tarotDescription-cardDescription {
+    margin-top: 32px;
+}
+
+.tarotDescription-bookReading {
+    width: 100%;
+    justify-content: center;
+}
+
+.tarot-starsCardsWrapper {
+    z-index: 1;
+}
+
+.tarot-starsOne {
+    position: absolute;
+    display: block;
+    bottom: -1px;
+    left: -19px;
+    transform: translateY(100%);
+}
+
+.tarot-starsOne .Svg--stars {
+    width: 40px;
+    height: 40px;
+}
+
+.tarot-starsTwo {
+    position: absolute;
+    display: block;
+    right: -28px;
+    top: 27px;
+}
+
+.tarot-starsTwo .Svg--stars {
+    width: 56px;
+    height: 56px;
+}
+
+@media screen and (min-width:1025px) {
+    .tarot-title {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .tarot-second_star {
+        display: block;
+        margin-left: 24px;
+    }
+
+    .tarot-first_star {
+        margin-right: 24px;
+    }
+
+    .tarot-cardsWrapper {
+        max-width: 856px;
+        margin-left: 0;
+        margin-right: 0;
+        cursor: pointer;
+    }
+
+    .tarotDescription-sectionWrapper {
+        text-align: left;
+    }
+
+    .tarot-sectionWrapper .Svg--tarot_card {
+        width: 191px;
+        min-width: 191px;
+        height: 333px;
+        border: 8px solid var(--elements_color);
+        border-radius: 8px;
+        background: var(--background_color);
+        pointer-events:all;
+    }
+
+    .tarot-sectionWrapper .Svg--tarot_card:hover { 
+        border: 8px solid var(--details_color);
+        transition: all 0.3s ease;
+        transform: scale(1.02);
+    }
+
+    .tarot-sectionWrapper .Svg--tarot_card:not(:first-child) {
+        margin-left: -80px;
+    }
+
+    .tarot-sectionWrapper .Button {
+        width: fit-content;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .tarotDescription-cardWrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 905px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 64px;
+    }
+
+    .tarotDescription-imageWrapper {
+        margin-top: 0;
+        width: 29.2818%;
+    }
+
+    .tarotDescription-image {
+        width: 100%;
+    }
+
+    .tarotDescription-cardDescription {
+        margin-top: 0;
+        width: 63.6465%;
+    }
+
+    .tarotDescription-bookReading {
+        width: fit-content;
+    }
+
+    .tarot-starsCardsWrapper {
+        width: fit-content;
+        margin: 0 auto;
+    }
+
+    .tarot-starsOne {
+        transform: translate(-100%, 0);
+        z-index: 2;
+        left: -20px;
+        bottom: -27px;
+    }
+
+    .tarot-starsOne .Svg--stars {
+        width: 64px;
+        height: 64px;
+    }
+
+}
+
+.tarot-hidden {
+    display: none;
+}

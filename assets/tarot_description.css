@@ -1,0 +1,101 @@
+.tarotDescription-sectionWrapper {
+    padding: 32px 16px;
+    background: var(--background_color);
+    color: var(--elements_color);
+    text-align: center;
+}
+
+.tarotDescription-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tarot-second_star {
+    display: none;
+}
+
+.tarotDescription-cardWrapper {
+    margin-top: 32px;
+}
+
+.tarotDescription-image {
+    width: 70.6667vw;
+    margin: 0 auto;
+    display: block;
+}
+
+.tarotDescription-pickAnother {
+    color: var(--subdetails_color);
+    border-bottom: 1px solid var(--subdetails_color);
+    text-align: center;
+    display: block;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.tarotDescription-cardDescription {
+    margin-top: 32px;
+}
+
+.tarotDescription-bookReading {
+    width: 100%;
+    justify-content: center;
+}
+
+@media screen and (min-width:1025px) {
+    .tarotDescription-sectionWrapper {
+        padding: 32px 0 64px 0;
+        text-align: left;
+    }
+
+    .tarot-second_star {
+        display: block;
+        margin-left: 24px;
+        width: 70px;
+        height: 70px;
+    }
+
+    .tarot-first_star {
+        margin-right: 24px;
+        width: 70px;
+        height: 70px;
+    }
+
+    .tarotDescription-header {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .tarotDescription-cardWrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 905px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 64px;
+    }
+
+    .tarotDescription-imageWrapper {
+        margin-top: 0;
+        width: 29.2818%;
+    }
+
+    .tarotDescription-image {
+        width: 100%;
+    }
+
+    .tarotDescription-cardDescription {
+        margin-top: 0;
+        width: 63.6465%;
+    }
+
+    .tarotDescription-bookReading {
+        width: fit-content;
+    }
+    
+}

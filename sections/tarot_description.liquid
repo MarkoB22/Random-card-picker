@@ -1,0 +1,137 @@
+{{ 'tarot_description.css' | asset_url | stylesheet_tag }}
+
+{% assign colorGroup = "colorGroup--" | append: section.settings.colorGroup %}
+
+<div class="tarotDescription-sectionWrapper {{ colorGroup }}">
+{% if section.settings.header != blank %}
+    <div class="tarotDescription-header u-h1">
+        {% render 'icon_pack' with 'star', spacing: 'tarot-first_star' %}
+        {{ section.settings.header }}
+        {% render 'icon_pack' with 'star', spacing: 'tarot-second_star' %}
+    </div>
+{% endif %}
+
+<div class="tarotDescription-cardWrapper">
+
+    <div class="tarotDescription-imageWrapper">
+        {%- assign image_url = section.settings.card_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+        {%- assign image_temp = section.settings.card_image | image_url: width: 50 -%}
+            <img class="tarotDescription-image lazyload"
+            src="{{ image_temp }}"
+            data-src="{{ image_url }}"
+            data-widths="[400, 600, 800, 1000, 1200, 1500, 1800]"
+            data-sizes="auto"
+            alt="{{ section.settings.card_image.alt | escape }}">
+
+            <a href="{{ section.settings.pick_another_url }}" class="tarotDescription-pickAnother u-p6 mt-l">
+                {{ section.settings.pick_another }}
+            </a>
+    </div>
+
+    <div class="tarotDescription-cardDescription">
+
+        <div class="tarotDescription-cardTitle u-h2 mb-sxl">
+            {{ section.settings.card_heading }}
+        </div>
+
+        <div class="tarotDescription-cardText u-p4">
+            {{ section.settings.card_text }}
+        </div>
+
+        {% render 'buttons',
+        classes: "u-pb2 mt-xl tarotDescription-bookReading",
+        link: section.settings.book_reading_link,
+        text: section.settings.book_reading_text,
+        button_state: "Secondary" %}
+
+    </div>
+
+
+</div>
+
+
+
+
+</div>
+{% schema %}
+{
+"name": "Tarot description",
+"settings": [
+{
+    "type": "select",
+    "id": "colorGroup",
+    "options": [
+    {
+        "value": "primary",
+        "label": "Primary"
+    },
+    {
+        "value": "secondary",
+        "label": "Secondary"
+    },
+    {
+        "value": "third",
+        "label": "Third"
+    },
+    {
+        "value": "fourth",
+        "label": "Fourth"
+    }
+    ],
+    "default": "secondary",
+    "label": "Color group" 
+},
+{
+  "type": "text",
+  "id": "header",
+  "label": "Section header",
+  "default": "Tarot Reading"
+},
+{
+  "type": "image_picker",
+  "id": "card_image",
+  "label": "Card image"
+},
+{
+  "type": "text",
+  "id": "pick_another",
+  "label": "Pick another card text",
+  "default": "Pick another card"
+},
+{
+  "type": "url",
+  "id": "pick_another_url",
+  "label": "Pick another card link"
+},
+{
+  "type": "text",
+  "id": "card_heading",
+  "label": "Card heading",
+  "default": "text"
+},
+{
+  "type": "richtext",
+  "id": "card_text",
+  "label": "Card text",
+  "default": "<p>text</p>"
+},
+{
+  "type": "text",
+  "id": "book_reading_text",
+  "label": "Book reading button text",
+  "default": "Book reading at the store"
+},
+{
+  "type": "url",
+  "id": "book_reading_link",
+  "label": "Book reading button link"
+}
+],
+"presets": [
+{
+"name": "Tarot description",
+"category": "Image"
+}
+]
+}
+{% endschema %}
