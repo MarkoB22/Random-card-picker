@@ -1,10 +1,12 @@
-﻿# Random card picker
+# Random Card Picker Functionality
 
-This functionality was split into two sections.
-First is for card picking and can be implemented on any page.
-Second section is used for adding all the cards and their content on a page which is dedicated for that purpose.
+This functionality has been divided into two sections.   
+The first section allows for card picking and can be implemented on any page.   
+The second section is used to add all the cards and their content on a dedicated page.  
 
-[Video preview of section](https://gyazo.com/7089dfa7e7aab30439c6817efdc511d4)
+For a video preview of this section, please refer to the following link: [https://gyazo.com/7089dfa7e7aab30439c6817efdc511d4].
 
 ## Note
-Main css file not included
+The main CSS file is not included in this repository.
+
+
